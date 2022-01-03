@@ -1,33 +1,55 @@
-import Head from "next/head";
-import { Fragment, useEffect } from "react";
-import { collection, addDoc, getDocs, query } from "firebase/firestore";
-import { firebaseDb } from "../firebaseConfig";
 import NextLink from "next/link";
-import { Container, Link } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardActionArea,
+  CardContent,
+} from "@mui/material";
+
+const cards = [
+  {
+    link: "/users",
+    name: "users",
+  },
+  {
+    link: "/users/new",
+    name: "new user",
+  },
+  {
+    link: "/ratings",
+    name: "ratings",
+  },
+  {
+    link: "/ratings/new",
+    name: "new rating",
+  },
+];
 
 export default function Home() {
   return (
-    <Container>
-      <main>
-        <div>
-          <h1>boba rate</h1>
-          <NextLink href="/users" passHref>
-            <Link>users</Link>
-          </NextLink>
-          <br />
-          <NextLink href="/users/new" passHref>
-            <Link>new user</Link>
-          </NextLink>
-          <br />
-          <NextLink href="/ratings" passHref>
-            <Link>ratings</Link>
-          </NextLink>
-          <br />
-          <NextLink href="/ratings/new" passHref>
-            <Link>new rating</Link>
-          </NextLink>
-        </div>
-      </main>
-    </Container>
+    <main>
+      <Container>
+        <Typography variant="h1" gutterBottom>
+          boba rate
+        </Typography>
+        <Grid container spacing={2}>
+          {cards.map((card, index) => (
+            <Grid item key={index} xs={6}>
+              <Card sx={{ height: "100%" }}>
+                <CardActionArea>
+                  <CardContent>
+                    <NextLink href={card.link} passHref>
+                      <Typography variant="h3">{card.name}</Typography>
+                    </NextLink>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </main>
   );
 }

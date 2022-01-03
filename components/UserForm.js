@@ -1,5 +1,5 @@
 import { LoadingButton } from "@mui/lab";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { Field, Form } from "react-final-form";
 
 const UserForm = ({ onSubmit, isLoading, initialValues = undefined }) => (

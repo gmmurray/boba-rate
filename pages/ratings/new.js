@@ -1,5 +1,5 @@
 import { Box, Button, Container, Link, Typography } from "@mui/material";
-import { arrayUnion, collection, doc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
